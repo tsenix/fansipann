@@ -4520,6 +4520,23 @@ PERFORMANCE OF THIS SOFTWARE.
         }));
         modules_flsModules.gallery = galleyItems;
     }
+    const catalogItems = document.querySelectorAll(".item-catalog");
+    if (catalogItems.length) for (let i = 0; i < catalogItems.length; i++) {
+        const catalogItem = catalogItems[i];
+        const contactButton = catalogItem.querySelector(".item-catalog__button-contact");
+        contactButton.addEventListener("click", (function(e) {
+            e.preventDefault;
+            if (!catalogItem.classList.contains("active")) for (let j = 0; j < catalogItems.length; j++) catalogItems[j].classList.remove("active");
+            catalogItem.classList.toggle("active");
+        }));
+        document.addEventListener("click", (function(e) {
+            const target = e.target;
+            const its_catalogItem = target == catalogItem || catalogItem.contains(target);
+            const its_contactButton = target == contactButton;
+            const catalogItem_is_active = catalogItem.classList.contains("active");
+            if (!its_catalogItem && !its_contactButton && catalogItem_is_active) catalogItem.classList.remove("active");
+        }));
+    }
     window["FLS"] = true;
     menuInit();
 })();

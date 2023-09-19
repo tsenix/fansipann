@@ -544,6 +544,7 @@ h6 {
 }
 
 .item-catalog {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -551,6 +552,33 @@ h6 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.item-catalog.active .item-catalog__wrapper {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+}
+
+.item-catalog.active .item-catalog__item.item-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.item-catalog__wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
   padding: 15px 15px 25px;
   background-color: #FFFFFF;
   border-radius: 14px;
@@ -625,9 +653,23 @@ h6 {
   gap: 6px;
 }
 
-.item-catalog__item img {
+.item-catalog__item.item-info {
+  display: none;
+}
+
+.item-catalog__item-icon {
   width: 24px;
   height: 24px;
+}
+
+.item-catalog__item-context {
+  font-size: 16px;
+  line-height: 120%;
+}
+
+.item-catalog__item-context.link {
+  -webkit-transition: color 0.5s ease;
+  transition: color 0.5s ease;
 }
 
 .item-catalog__feedback {
@@ -1277,6 +1319,11 @@ h6 {
 .product__info-context {
   font-size: 16px;
   line-height: 120%;
+}
+
+.product__info-context.link {
+  -webkit-transition: color 0.5s ease;
+  transition: color 0.5s ease;
 }
 
 .product__photos {
@@ -2682,6 +2729,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
     color: #BA6A21;
   }
 
+  .item-catalog__item-context.link:hover {
+    color: #BA6A21;
+  }
+
   .item-catalog__feedback-link:hover {
     color: #111B40;
   }
@@ -2862,6 +2913,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
 
   .product__info-feedback:hover {
     color: #111B40;
+  }
+
+  .product__info-context.link:hover {
+    color: #BA6A21;
   }
 
   .form-feedback__rate-star:hover svg {
